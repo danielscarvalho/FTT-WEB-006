@@ -1,4 +1,4 @@
-package ftt.ec;
+package ftt.ec.api;
 
 import java.io.IOException;
 import javax.servlet.ServletConfig;
@@ -7,6 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import ftt.ec.control.BigIntControl;
+
+//MVC
 
 /**
  * Servlet implementation class WebApi
@@ -47,12 +51,18 @@ public class WebApi extends HttpServlet {
 		
 		System.out.println("Passei no GET!! - " + new java.util.Date());
 		
-		int a = Integer.valueOf(request.getParameter("a"));
-		int b = Integer.valueOf(request.getParameter("b"));
+		BigIntControl bi = new BigIntControl(request.getParameter("a"), 
+				                             request.getParameter("b"));
 		
+		//bi.setA(request.getParameter("a"));
+		//bi.setB(request.getParameter("b"));
+		
+		//int a = Integer.valueOf(request.getParameter("a"));
+		//int b = Integer.valueOf(request.getParameter("b"));
 		
 		// TODO Auto-generated method stub
-		response.getWriter().append(String.valueOf(a+b));
+		//response.getWriter().append(String.valueOf(a+b));
+		response.getWriter().append(bi.getSum());
 	}
 
 	/**
